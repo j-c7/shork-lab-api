@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+// Public
+model Short{
+  id Int @id @default(autoincrement())
+  url String
+  shortUrl String
+}
+
+// User
+model UserShorts{
+  id Int @id @default(autoincrement())
+  url String
+  shortUrl String
+  userId String
+  user Users @relation(fields: [userId], references: [id])
+}
+
+model Users{
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+  shorts UserShorts[]
+}
