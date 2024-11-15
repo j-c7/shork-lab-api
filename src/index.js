@@ -1,3 +1,11 @@
+import express from "express";
 
 
-console.log("Hola Mundo");
+const app = express();
+app.use(express.json());
+
+const PORT = 4000;
+
+app.listen(PORT, () => {
+    console.log(`Corriendo en el puerto ${PORT}`);
+})
