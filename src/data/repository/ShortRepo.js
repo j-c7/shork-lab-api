@@ -42,7 +42,7 @@ export class ShortRepo extends RepoBase {
 
     async remove(id) {
         const checkUrl = await this.checkShort(id);
-        if(checkUrl){
+        if (checkUrl) {
             const deletedUrl = await this.prisma.short.delete({
                 where: {
                     id,
@@ -54,7 +54,7 @@ export class ShortRepo extends RepoBase {
                 data: JSON.stringify(deletedUrl)
             }
         }
-        else{
+        else {
             return {
                 success: false,
                 msg: `Error al borrar url`,
@@ -73,7 +73,31 @@ export class ShortRepo extends RepoBase {
         return short ? true : false;
     }
 
-    // TODO: Añadir función para obtener la url acortada a partir de la url
+    async getByShort(short) {
+        const url = await this.prisma.short.findFirst({
+            where: {
+                shortUrl: short,
+            },
+            orderBy: {
+                id: 'desc',
+            },
+        })
+
+        if (url) {
+            return {
+                success: true,
+                msg: `Url obtenida correctamente`,
+                data: url
+            }
+        }
+        else {
+            return {
+                success: false,
+                msg: `No se pudo obtener url`,
+                data: null
+            }
+        }
+    }
 }
 
 

@@ -6,6 +6,7 @@ export class ShortService {
     }
 
     createUrl = async (model) => {
+        // TODO: Para evitar registrar una url que se repita, verificar si la url acortada ya existe, si es el caso, volver a generarla.
         const { url, shortUrl } = this.short(model);
         const modelSaved = await this.shortRepo.create({ url, shortUrl });
         if(modelSaved)
@@ -33,4 +34,8 @@ export class ShortService {
         return { url, shortUrl };
     };
 
+    async getUrlByShort(short){
+        const url = await this.shortRepo.getByShort(short);
+        return url;
+    }
 }
