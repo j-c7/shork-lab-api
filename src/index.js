@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import shortRoutes from "./routes/shortRoutes.js";
+import swaggerDocs from "./routes/swagger/v1/swagger.js";
 
 const app = express();
 app.use(express.json());
@@ -22,4 +23,5 @@ app.use("/api/short", shortRoutes);
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
     console.log(`Corriendo en el puerto ${PORT}`);
+    swaggerDocs(app, PORT);
 })
