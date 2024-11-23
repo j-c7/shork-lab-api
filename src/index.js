@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import shortRoutes from "./routes/shortRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -15,6 +16,8 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Credentials', true)
     next()
 })
+
+app.use("/api/short", shortRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
