@@ -8,10 +8,10 @@ app.use(express.json());
 dotenv.config();
 
 const corsUrl = [process.env.CLIENT_URL] || ["*"]
+console.log(corsUrl)
 
 // Cors
 app.use((req, res, next) => {
-    console.log(corsUrl)
     res.append("Access-Control-Allow-Origin", corsUrl);
     res.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE")
     res.append('Access-Control-Allow-Headers', 'Content-Type');
