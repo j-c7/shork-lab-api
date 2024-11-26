@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import shortRoutes from "./routes/shortRoutes.js";
 import swaggerDocs from "./routes/swagger/v1/swagger.js";
+import awakeRoutes from "./routes/awakeRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use((req, res, next) => {
 })
 
 app.use("/api/short", shortRoutes);
+app.use("/api/dev", awakeRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
