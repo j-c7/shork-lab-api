@@ -21,7 +21,6 @@ app.use((req, res, next) => {
 })
 
 app.use("/api/short", shortRoutes);
-app.use("/api/dev", awakeRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
