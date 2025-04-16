@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 dotenv.config();
 
-const corsUrl = [process.env.CLIENT_URL] || ["*"]
+//const corsUrl = [process.env.CLIENT_URL] || ["*"]
 //console.log(corsUrl)
 
 // Cors
