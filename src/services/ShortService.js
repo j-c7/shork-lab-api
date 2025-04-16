@@ -9,7 +9,7 @@ export class ShortService {
         // TODO: Para evitar registrar una url que se repita, verificar si la url acortada ya existe, si es el caso, volver a generarla.
         const { url, shortUrl } = this.short(model);
         const modelSaved = await this.shortRepo.create({ url, shortUrl });
-        if(modelSaved)
+        if (modelSaved)
             this.autoDeleteShort(modelSaved);
         return modelSaved;
     }
@@ -19,10 +19,10 @@ export class ShortService {
             const { id } = model.data.createdUser;
             const deleted = await this.shortRepo.remove(id);
             const { success, msg, data } = deleted
-            if(success){
+            if (success) {
                 console.log(`${msg}} ${data}`)
             }
-            else{
+            else {
                 console.log(`${msg}`)
             }
         }, "120000")
@@ -34,7 +34,7 @@ export class ShortService {
         return { url, shortUrl };
     };
 
-    async getUrlByShort(short){
+    async getUrlByShort(short) {
         const url = await this.shortRepo.getByShort(short);
         return url;
     }

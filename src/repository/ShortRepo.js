@@ -1,8 +1,11 @@
-import { RepoBase } from "./RepoBase.js";
+import { PrismaClient } from "@prisma/client/extension";
 
-export class ShortRepo extends RepoBase {
+
+export class ShortRepo {
+    prisma = new PrismaClient();
+
     constructor() {
-        super()
+
     }
 
     async create(model) {
@@ -99,5 +102,3 @@ export class ShortRepo extends RepoBase {
         }
     }
 }
-
-

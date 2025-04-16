@@ -2,14 +2,13 @@ import express from "express";
 import dotenv from "dotenv";
 import shortRoutes from "./src/routes/shortRoutes.js";
 import swaggerDocs from "./src/routes/swagger/v1/swagger.js";
-import awakeRoutes from "./src/routes/awakeRoutes.js";
 
 const app = express();
 app.use(express.json());
 dotenv.config();
 
 const corsUrl = [process.env.CLIENT_URL] || ["*"]
-console.log(corsUrl)
+//console.log(corsUrl)
 
 // Cors
 app.use((req, res, next) => {
